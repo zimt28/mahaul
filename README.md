@@ -217,6 +217,17 @@ defmodule MyApp.Env do
 end
 ```
 
+## Base64 Encoding
+
+Base64-encoded values can be read by setting the `base64` option to `true`.
+
+```elixir
+defmodule MyApp.Env do
+  use Mahaul,
+    ENCODED_STR: [type: :str, base64: true]
+end
+```
+
 ## Setting custom function names
 
 You can use the `fun` option to use a custom function name instead of the default one.

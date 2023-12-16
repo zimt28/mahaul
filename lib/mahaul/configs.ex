@@ -41,10 +41,10 @@ defmodule Mahaul.Configs do
     end
   end
 
-  defp validate_opt!({:fun, fun}, name) do
-    unless is_atom(fun) do
+  defp validate_opt!({:base64, encoded?}, name) do
+    unless is_boolean(encoded?) do
       raise ArgumentError,
-            "#{name}: expected :fun to be an atom, got: #{inspect(fun)}"
+            "#{name}: expected :base64 to be a boolean, got: #{inspect(encoded?)}"
     end
   end
 
@@ -83,6 +83,13 @@ defmodule Mahaul.Configs do
               "#{name}: expected :defaults :#{key} to be a string, got: #{inspect(val)}"
       end
     end)
+  end
+
+  defp validate_opt!({:fun, fun}, name) do
+    unless is_atom(fun) do
+      raise ArgumentError,
+            "#{name}: expected :fun to be an atom, got: #{inspect(fun)}"
+    end
   end
 
   defp validate_opt!({:doc, doc}, name) do
